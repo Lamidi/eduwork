@@ -19,30 +19,30 @@
                                         <th>Price</th>
                                         <th>Disc (%)</th>
                                         <th>Total</th>
-                                        <th><a href="#" class="btn btn-sm btn-success add_more"><i class="fa fa-plus"></i></a></th>
+                                        <th><a href="#" class="btn btn-sm btn-success rounded-circle add_more"><i class="fa fa-plus"></i></a></th>
                                     </tr>
                                 </thead>
                                 <tbody class="addMoreProduct">
                                     <tr>
                                         <td>1</td>
                                         <td>
-                                            <select name="product_id" id="product_id" class="form-control product_id"> @foreach($products as $product)
-                                                <option value="{{$product->id}}">{{$product->product_name}}</option>@endforeach
+                                            <select name="product_id" id="product_id" class="form-control product_id">
+                                                <option value="" selected disabled hidden>Choose item...</option> @foreach($products as $product)
+                                                <option data-price="{{$product->price}}" value="{{$product->id}}">{{$product->product_name}}</option>@endforeach
                                             </select>
                                         </td>
                                         <td>
-                                            <input type="number" name="qty[]" id="qty" class="form-control">
+                                            <input type="number" name="qty[]" id="qty" class="form-control qty">
                                         </td>
                                         <td>
-                                            <input type="number" name="price[]" id="price" class="form-control">
+                                            <input type="number" name="price[]" id="price" class="form-control price">
                                         </td>
                                         <td>
-                                            <input type="number" name="discount[]" id="discount" class="form-control">
+                                            <input type="number" name="discount[]" id="discount" class="form-control discount">
                                         </td>
                                         <td>
-                                            <input type="number" name="total[]" id="total" class="form-control">
+                                            <input type="number" name="total_amount[]" id="total_amount" class="form-control total_amount">
                                         </td>
-                                        <td><a href="#" class="btn btn-sm btn-danger delete"><i class="fa fa-times"></i></a></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -53,7 +53,7 @@
             <div class="col-md-3">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Search product</h4>
+                        <h4>Total <b class="total">0.00</b></h4>
                         <div class="card-body"></div>
                     </div>
                 </div>
@@ -123,13 +123,50 @@
     $('.add_more').on('click', function() {
         var product = $('.product_id').html();
         var numberofrow = ($('.addMoreProduct tr').length - 0) + 1;
-        var tr = '<tr><td class"no"">' + numberofrow + '</td>' + '<td> <select class="form-control product_id" name"product_id[]">' + product + '</select></td>' +
-            '<td> <input type="number" class="form-control" name"qty[]"></td>' +
-            '<td> <input type="number" class="form-control" name"price[]"></td>' +
-            '<td> <input type="number" class="form-control" name"discount[]"></td>' +
-            '<td> <input type="number" class="form-control" name"total[]"></td>' +
-            '<td><a class="btn btn-sm btn-danger delete rounded circle"><i class="fa fa-times-circle"></i></a></td>';
+        var tr = '<tr><td class"no"">' + numberofrow + '</td>' +
+            '<td> <select class="form-control product_id" name"product_id[]">' + product + '</select></td>' +
+            '<td> <input type="number" class="form-control qty" name"qty[]"></td>' +
+            '<td> <input type="number" class="form-control price" name"price[]"></td>' +
+            '<td> <input type="number" class="form-control discount" name"discount[]"></td>' +
+            '<td> <input type="number" class="form-control total_amount" name"total_amount[]"></td>' +
+            '<td><a class="btn btn-sm btn-danger rounded-circle delete"><i class="fa fa-times-circle"></i></a></td>';
         $('.addMoreProduct').append(tr);
-    })
+    });
+
+    //delete a row
+    $('.addMoreProduct').delegate('.delete', 'click', function() {
+        $(this).parent().parent().remove();
+    });
+
+    function TotalAmount() {
+        var total = 0;
+        $('.total_amount').each(function(i, e) {
+            var amount = $(this).val() - 0;
+            total += amount;
+        });
+        $('.total').html(total);
+    };
+
+    $('.addMoreProduct').delegate('.product_id', 'change', function() {
+        var tr = $(this).parent().parent();
+        var price = tr.find('.product_id option:selected').attr('data-price');
+        tr.find('.price').val(price);
+        var qty = tr.find('.qty').val() - 0;
+        var disc = tr.find('.discount').val() - 0;
+        var price = tr.find('.price').val() - 0;
+        var total_amount = (qty * price) - ((qty * price * disc) / 100);
+        tr.find('.total_amount').val(total_amount);
+        TotalAmount();
+    });
+
+    $('.addMoreProduct').delegate('.qty, .discount', 'keyup', function() {
+        var tr = $(this).parent().parent();
+        var qty = tr.find('.qty').val() - 0;
+        var disc = tr.find('.discount').val() - 0;
+        var price = tr.find('.price').val() - 0;
+        var total_amount = (qty * price) - ((qty * price * disc) / 100);
+        tr.find('.total_amount').val(total_amount);
+        TotalAmount();
+    });
 </script>
 @endsection
