@@ -10,4 +10,8 @@ class Order extends Model
     use HasFactory;
     protected $table = 'orders';
     protected $fillable = ['name', 'address'];
+    // public function products()
+    // {
+    //     return $this->belongsToMany(Product::class);
+    // }
 }
