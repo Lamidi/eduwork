@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
+use App\Models\Order;
 use App\Models\Order_Detail;
 use Illuminate\Support\Facades\Route;
 
@@ -28,7 +29,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('/orders', OrderDetailController::class);
+Route::resource('/orders', OrderController::class);
 Route::resource('/products', ProductController::class);
 Route::resource('/suppliers', SupplierController::class);
 Route::resource('/companies', CompanyController::class);
