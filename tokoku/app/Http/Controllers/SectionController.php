@@ -56,12 +56,6 @@ class SectionController extends Controller
      */
     public function edit($section_id)
     {
-        $section = SectionModel::findOrFail($section_id);
-
-        $this->section_name = $section->section_name;
-        $this->section_status = $section->status;
-        // $this->addmore = [1];
-        // $this->dispatchBrowserEvent('closemodel');
     }
 
     /**
@@ -71,9 +65,14 @@ class SectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $sections)
     {
-        //
+        // dd($request->all());
+        $sections = SectionModel::find($sections);
+        $sections->section_name = $request->section_name;
+        $sections->status = $request->section_status ??  0;
+        $sections->save();
+        return redirect()->back()->with('Success', 'Section Updated Sucessfully!');
     }
 
     /**
@@ -85,6 +84,6 @@ class SectionController extends Controller
     public function destroy(SectionModel $section)
     {
         $section->delete();
-        return redirect()->back()->with('Success', 'Product Deleted Sucessfully!');
+        return redirect()->back()->with('Success', 'Section Deleted Sucessfully!');
     }
 }

@@ -33,21 +33,16 @@ class Section extends Component
         $this->formreset();
         $this->SwalMessageDialog('Section Inserted Successfully');
     }
-
+    public function editsection($section_id)
+    {
+        $section = SectionModel::findOrFail($section_id);
+        $this->section_name = $section->section_name;
+        $this->section_status = $section->status;
+    }
     public function formreset()
     {
         $this->section_name = '';
         $this->section_status = '';
-        $this->addmore = [1];
-        $this->dispatchBrowserEvent('closemodel');
-    }
-    public function editsection($section_id)
-    {
-
-        $section = SectionModel::findOrFail($section_id);
-
-        $this->section_name = $section->section_name;
-        $this->section_status = $section->status;
         $this->addmore = [1];
         $this->dispatchBrowserEvent('closemodel');
     }
