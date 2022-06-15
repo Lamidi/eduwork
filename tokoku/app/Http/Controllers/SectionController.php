@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Section as SectionModel;
 
 class SectionController extends Controller
 {
@@ -34,7 +35,6 @@ class SectionController extends Controller
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**
@@ -54,9 +54,14 @@ class SectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($section_id)
     {
-        //
+        $section = SectionModel::findOrFail($section_id);
+
+        $this->section_name = $section->section_name;
+        $this->section_status = $section->status;
+        // $this->addmore = [1];
+        // $this->dispatchBrowserEvent('closemodel');
     }
 
     /**
@@ -77,8 +82,9 @@ class SectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(SectionModel $section)
     {
-        //
+        $section->delete();
+        return redirect()->back()->with('Success', 'Product Deleted Sucessfully!');
     }
 }
