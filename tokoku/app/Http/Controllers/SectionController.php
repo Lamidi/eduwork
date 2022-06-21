@@ -70,8 +70,14 @@ class SectionController extends Controller
         // dd($request->all());
         $sections = SectionModel::find($sections);
         $sections->section_name = $request->section_name;
-        $sections->status = $request->section_status ??  0;
-        $sections->save();
+        $sections->status = $request->section_status;
+        if (!$request->has('section_status')) {
+            $sections->status = "0";
+        } else {
+            $sections->status = "1";
+        }
+        $sections->update();
+
         return redirect()->back()->with('Success', 'Section Updated Sucessfully!');
     }
 

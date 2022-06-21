@@ -1,4 +1,4 @@
-<div class="modal fade" id="addsection" wire:ignore.self data-backdrop="static">
+<div class="modal fade closeModal" id="addsection" wire:ignore.self data-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

@@ -15,7 +15,7 @@
                     </div>
                     <div class="form-row">
                         <label for="">Section Status</label>
-                        <input type="checkbox" name="section_status" {{$section->status== 1 ?  'checked':''}}||{{$section->status== 0 ?  'unchecked':''}}>
+                        <input type="checkbox" name="section_status" {{$section->status== 1 ?  'checked':''}}>
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn-pimary btn-block">
