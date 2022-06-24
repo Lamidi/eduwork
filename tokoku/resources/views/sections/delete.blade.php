@@ -9,7 +9,7 @@
                 <form action="{{route('sections.destroy', $section->id)}}" method="post">
                     @csrf
                     @method('delete')
-                    <p>Are You Sure To Delete This product: {{$section->section_name}} ?</p>
+                    <p>Are You Sure To Delete This Section: {{$section->section_name}} ?</p>
                     <div class="modal-footer">
                         <button class="btn btn-danger btn-block">Deleted Data</button>
                     </div>

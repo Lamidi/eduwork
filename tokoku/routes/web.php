@@ -35,3 +35,4 @@ Route::resource('/users', UserController::class);
 Route::resource('/transactions', TransactionController::class);
 Route::get('/barcode', [App\Http\Controllers\ProductController::class, 'getproductbarcodes'])->name('products.barcode');
 Route::resource('/sections', SectionController::class);
+Route::delete('deleteMultiple', [SectionController::class, 'deleteMultiple'])->name('sections.deleteMultiple');

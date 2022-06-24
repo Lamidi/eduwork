@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Section as SectionModel;
+use Illuminate\Support\Facades\DB;
 
 class SectionController extends Controller
 {
@@ -91,5 +92,12 @@ class SectionController extends Controller
     {
         $section->delete();
         return redirect()->back()->with('Success', 'Section Deleted Sucessfully!');
+    }
+    public function deleteMultiple(Request $request)
+    {
+        dd($request);
+        $ids = $request->ids;
+        SectionModel::whereIn('id', explode(",", $ids))->delete();
+        return response()->json(['status' => true, 'message' => "Section deleted successfully."]);
     }
 }
