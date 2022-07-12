@@ -93,9 +93,9 @@
                                 <td>
                                     Returning Change <input type="number" readonly name="balance" id="balance" class="form-control">
                                 </td>
-                                <td> <button type="button" class="btn btn-info mt-3">Save</button>
+                                <td> <button class="btn btn-info mt-3">Save</button>
                                 </td>
-                                <td> <button type="button" onclick="PrintReceiptContent('print')" class="btn btn-dark"><i class="fa fa-print"></i> Print</button>
+                                <td> <button type="button" onclick="PrintReceiptContent('print')" class="btn btn-dark"><i class="fa fa-print"></i> Print</button></button>
                                 </td>
                             </div>
                         </div>
