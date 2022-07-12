@@ -13,7 +13,7 @@ class Order_Detail extends Model
 
     public function product()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Product::class)->withPivot('qty');
     }
 
     public function order()

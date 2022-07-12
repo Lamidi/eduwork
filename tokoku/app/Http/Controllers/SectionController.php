@@ -93,11 +93,10 @@ class SectionController extends Controller
         $section->delete();
         return redirect()->back()->with('Success', 'Section Deleted Sucessfully!');
     }
-    public function deleteMultiple(Request $request)
+    public function deletemultiple(Request $request)
     {
-        dd($request);
         $ids = $request->ids;
-        SectionModel::whereIn('id', explode(",", $ids))->delete();
-        return response()->json(['status' => true, 'message' => "Section deleted successfully."]);
+        SectionModel::whereIn('id', $ids)->delete();
+        return response()->json(['success' => "Section deleted successfully."]);
     }
 }
