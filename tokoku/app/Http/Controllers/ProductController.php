@@ -159,7 +159,7 @@ class ProductController extends Controller
         if (!$products) {
             return back()->with('error', 'Product not Found');
         }
-        return redirect()->back()->with('success', 'Product Updated Sucessfully!');
+        return redirect()->back()->with('info', 'Product Updated Sucessfully!');
     }
 
     /**
@@ -171,7 +171,7 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect()->back()->with('success', 'Product Deleted Sucessfully!');
+        return redirect()->back()->with('warning', 'Product Deleted Sucessfully!');
     }
     public function getproductbarcodes()
     {

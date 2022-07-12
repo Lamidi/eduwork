@@ -88,7 +88,7 @@ class SupplierController extends Controller
             return back()->with('error', 'Supplier not Found');
         }
         // $suppliers->update($request->all());
-        return back()->with('success', 'Supplier Updated Successfully');
+        return back()->with('info', 'Supplier Updated Successfully');
     }
 
     /**
@@ -104,6 +104,6 @@ class SupplierController extends Controller
             return back()->with('error', 'Supplier not Found');
         }
         $suppliers->delete();
-        return back()->with('success', 'Supplier Deleted Successfully');
+        return back()->with('warning', 'Supplier Deleted Successfully');
     }
 }

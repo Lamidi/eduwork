@@ -101,7 +101,7 @@ class UserController extends Controller
             return back()->with('error', 'User not Found');
         }
         $users->delete();
-        return back()->with('success', 'User Deleted Successfully');
+        return back()->with('warning', 'User Deleted Successfully');
     }
     public function test_spatie()
     {

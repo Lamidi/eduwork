@@ -83,7 +83,7 @@ class CustomerController extends Controller
             return back()->with('error', 'Customer not Found');
         }
         $customers->update($request->all());
-        return back()->with('success', 'Customer Updated Successfully');
+        return back()->with('info', 'Customer Updated Successfully');
     }
 
     /**
@@ -99,6 +99,6 @@ class CustomerController extends Controller
             return back()->with('error', 'Customer not Found');
         }
         $customers->delete();
-        return back()->with('success', 'Customer Deleted Successfully');
+        return back()->with('warning', 'Customer Deleted Successfully');
     }
 }
