@@ -15,8 +15,8 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Name</th>
-                                        <th>Phone</th>
                                         <th>Email</th>
+                                        <th>Phone</th>
                                         <th>Address</th>
                                         <th>Actions</th>
                                     </tr>
@@ -27,7 +27,7 @@
                                         <td>{{$key+1}}</td>
                                         <td>{{$customer->name}}</td>
                                         <td>{{$customer->email}}</td>
-                                        <td>{{$customer->phone}}</td>
+                                        <td>{{phone($customer->phone)}}</td>
                                         <td>{{$customer->address}}</td>
                                         <td>
                                             <div class="btn-group">

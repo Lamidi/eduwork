@@ -23,10 +23,10 @@ class OrderController extends Controller
     {
         $customers = Customer::all();
         $orders = Order::all();
-        $products = Product::all();
+        $products = Product::all()->where('qty', '>=', '1');
         $lastID = Order_Detail::max('order_id');
         $order_receipt = Order_Detail::where('order_id', $lastID)->get();
-        return view('orders.index', compact('orders', 'products', 'order_receipt', 'customers',));
+        return view('orders.index', compact('orders', 'products', 'order_receipt', 'customers'));
     }
 
     public function api()
@@ -91,7 +91,12 @@ class OrderController extends Controller
                 $orderedBy = Order::where('id', $orders->getKey())->get();
 
                 // pengurangan stock
+                // Jika satu product yang dibeli
                 $qty = $request->qty;
+                if (COUNT(array($qty)) == 1) {
+                    DB::table('products')->where('id', $qty)->decrement('qty');
+                }
+                // Jika ada lebih dari satu product yang dipinjam
                 if (COUNT($qty) > 1) {
                     foreach ($qty as $id) {
                         DB::table('products')->where('id', $id)->decrement('qty');

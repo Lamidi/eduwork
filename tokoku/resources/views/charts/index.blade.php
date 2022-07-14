@@ -156,12 +156,12 @@
                 <td><input type="checkbox" name="ids" class="checkboxclass" value="{{$order->id}}"></td>
                 <td>{{$key+1}}</td>
                 <td>{{$order->nameo}}</td>
-                <td>{{$order->paid_amount}}</td>
-                <td>{{$order->balance}}</td>
+                <td>{{rupiah($order->paid_amount)}}</td>
+                <td>{{rupiah($order->balance)}}</td>
                 <td>{{$order->payment_method}}</td>
                 <td>{{$order->nameu}}</td>
                 <td>{{$order->transac_date}}</td>
-                <td>{{$order->transac_amount}}</td>
+                <td>{{rupiah($order->transac_amount)}}</td>
             </tr>
             @endforeach
             @endif

@@ -64,7 +64,7 @@
                                             <label for="">Customer Name</label>
                                             <select name="customer_name" id="customer_name" class="form-control customer_name">
                                                 <option value="" selected disabled hidden>Choose Name...</option> @foreach($customers as $customer)
-                                                <option data-customer="{{$customer->phone}}" value="{{$customer->id}}">{{$customer->name}}</option>@endforeach
+                                                <option data-customer="{{$customer->phone}}" value="{{$customer->name}}">{{$customer->name}}</option>@endforeach
                                             </select>
                                         </td>
                                         <td>
@@ -155,13 +155,13 @@
                                                 <p class="itemtext">{{$receipt->qty}}</p>
                                             </td>
                                             <td class="tableitem">
-                                                <p class="itemtext">{{number_format($receipt->price,2)}}</p>
+                                                <p class="itemtext">{{rupiah($receipt->price)}}</p>
                                             </td>
                                             <td class="tableitem">
-                                                <p class="itemtext">{{number_format($receipt->discount,2)}}</p>
+                                                <p class="itemtext">{{number_format($receipt->discount)}}%</p>
                                             </td>
                                             <td class="tableitem">
-                                                <p class="itemtext">{{number_format($receipt->amount,2)}}</p>
+                                                <p class="itemtext">{{rupiah($receipt->amount)}}</p>
                                             </td>
                                         </tr>
                                         <tr class="tabletitle">
@@ -172,7 +172,7 @@
                                                 <p class="itemtext">Tax</p>
                                             </td>
                                             <td class="Payment">
-                                                <p class="itemtext">{{number_format($receipt->amount*0.11,2)}}</p>
+                                                <p class="itemtext">{{rupiah($receipt->amount*0.11)}}</p>
                                             </td>
                                         </tr>
                                         <tr class="tabletitle">
@@ -183,7 +183,7 @@
                                                 <p class="itemtext">Total</p>
                                             </td>
                                             <td class="Payment">
-                                                <p class="itemtext">{{number_format($receipt->sum('amount'),2)}}</p>
+                                                <p class="itemtext">{{rupiah($receipt->sum('amount'))}}</p>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -340,7 +340,6 @@
 </style>
 </div>
 @endsection
-
 @section('script')
 <script>
     $('.add_more').on('click', function() {
