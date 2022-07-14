@@ -417,5 +417,11 @@
         var phone = $('.customer_name option:selected').attr('data-customer');
         $('.customer_phone').val(phone);
     });
+
+    Swal.fire(
+        'Please Check Notifications Before Order',
+        'Thank You',
+        'warning'
+    )
 </script>
 @endsection
