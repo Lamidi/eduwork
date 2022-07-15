@@ -193,6 +193,7 @@
                                 </div>
                                 <div class="serial-number">
                                     <span>Serial Code: @foreach($order_receipt as $receipt) {{$receipt->id}}@endforeach</span><br>
+                                    <span>Member Name: @foreach($order_receipt as $receipt) {{$receipt->name}}@endforeach</span><br>
                                     <span> Date:
                                         <?php
                                         date_default_timezone_set('Asia/Jakarta'); // Zona Waktu indonesia
@@ -419,7 +420,7 @@
     });
 
     Swal.fire(
-        'Please Check Notifications Before Order',
+        'Please Check Notifications Before Create New Orders',
         'Thank You',
         'warning'
     )

@@ -25,8 +25,8 @@ class OrderController extends Controller
         $orders = Order::all();
         $products = Product::all()->where('qty', '>=', '1');
         $lastID = Order_Detail::max('order_id');
-        $order_receipt = Order_Detail::where('order_id', $lastID)->get();
-        return view('orders.index', compact('orders', 'products', 'order_receipt', 'customers'));
+        $order_receipt = Order_Detail::where('order_id', $lastID)->join('orders', 'orders.id', '=', 'order_details.order_id')->get();
+        return view('orders.index', compact('orders', 'products', 'order_receipt', 'customers',));
     }
 
     public function api()
