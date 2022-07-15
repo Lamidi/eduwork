@@ -70,7 +70,11 @@ class OrderController extends Controller
                         'discount' => $request->discount[$key] ?? 0,
                     ]);
                 }
-
+                // pengurangan stock
+                $stock = $request->qty;
+                if ($stock > 0) {
+                    Product::where('id', $request->product_id)->decrement('qty');
+                }
                 // transaction
                 $order_id = $orders->id;
                 $transaction = new Transaction;
@@ -90,18 +94,6 @@ class OrderController extends Controller
                 $orderedBy = Order::where('id', $order_id)->get();
                 $orderedBy = Order::where('id', $orders->getKey())->get();
 
-                // pengurangan stock
-                // Jika satu product yang dibeli
-                $qty = $request->qty;
-                if (COUNT(array($qty)) == 1) {
-                    DB::table('products')->where('id', $qty)->decrement('qty');
-                }
-                // Jika ada lebih dari satu product yang dipinjam
-                if (COUNT($qty) > 1) {
-                    foreach ($qty as $id) {
-                        DB::table('products')->where('id', $id)->decrement('qty');
-                    }
-                }
                 return view('orders.index', ['product' => $products, 'order_details' => $order_details, 'cutomer_orders' => $orderedBy]);
             }
         );

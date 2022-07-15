@@ -11,7 +11,7 @@
                 <div class="icon">
                     <i class="fa-solid fa-bag-shopping"></i>
                 </div>
-                <a href="{{url('orders')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <!-- <a href="{{url('orders')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
             </div>
         </div>
         <div class="col-lg-3 col-6">
@@ -136,7 +136,7 @@
             <tr>
                 <th><input type="checkbox" id="check_all"></th>
                 <th>NO</th>
-                <th>ORDER NAME</th>
+                <th>CUSTOMER NAME</th>
                 <th>PAID AMOUNT</th>
                 <th>BALANCE</th>
                 <th>PAYMENT METHOD</th>
@@ -165,18 +165,6 @@
         </tbody>
     </table>
 </div>
-<script src="{{asset('assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
-<script src="{{asset('assets/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
-<script src="{{asset('assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
-<script src="{{asset('assets/plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
-<script src="{{asset('assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
-<script src="{{asset('assets/plugins/jszip/jszip.min.js')}}"></script>
-<script src="{{asset('assets/plugins/pdfmake/pdfmake.min.js')}}"></script>
-<script src="{{asset('assets/plugins/pdfmake/vfs_fonts.js')}}"></script>
-<script src="{{asset('assets/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
-<script src="{{asset('assets/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
-<script src="{{asset('assets/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
 <script>
     $(function() {
         $("#example1").DataTable({

@@ -110,11 +110,6 @@ class ChartController extends Controller
     {
         $ids = $request->ids;
         Transaction::whereIn('id', $ids)->delete();
-        $qty = Product::select('id', $ids);
-        // Return qty buku yg dipinjam
-        if (COUNT(array($qty)) > 1) {
-            DB::table('products')->where('id', $qty)->increment('qty');
-        }
         return response()->json(['warning' => "Transaction deleted successfully."]);
     }
 }

@@ -95,7 +95,7 @@
                                 </td>
                                 <td> <button class="btn btn-info mt-3">Save</button>
                                 </td>
-                                <td> <button type="button" onclick="PrintReceiptContent('print')" class="btn btn-dark"><i class="fa fa-print"></i> Print</button></button>
+                                <td> <button type="button" onclick="PrintReceiptContent('print')" class="btn btn-dark"><i class="fa fa-print"></i> Print Last Orders</button></button>
                                 </td>
                             </div>
                         </div>
