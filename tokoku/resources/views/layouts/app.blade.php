@@ -59,6 +59,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
+                        @role('admin')
                         <li class="nav-item dropdown">
                             <a class="nav-link" data-toggle="dropdown" href="#">
                                 <i class="fa-solid fa-bell"></i>
@@ -70,6 +71,20 @@
                                 {{ stock() }}
                             </div>
                         </li>
+                        @endrole
+                        @role('cashier')
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" data-toggle="dropdown" href="#">
+                                <i class="fa-solid fa-bell"></i>
+                                <span class="badge badge-warning navbar-badge"></span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                                <span class="dropdown-item dropdown-header">Stock Notifications</span>
+                                <div class="dropdown-divider"></div>
+                                {{ stock() }}
+                            </div>
+                        </li>
+                        @endrole
                         @guest
                         @if (Route::has('login'))
                         <li class="nav-item">

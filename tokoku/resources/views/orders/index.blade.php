@@ -183,7 +183,7 @@
                                                 <p class="itemtext">Total</p>
                                             </td>
                                             <td class="Payment">
-                                                <p class="itemtext">{{rupiah($receipt->sum('amount'))}}</p>
+                                                <p class="itemtext">{{rupiah($receipt->amount*(1+11/100))}}</p>
                                             </td>
                                         </tr>
                                         @endforeach

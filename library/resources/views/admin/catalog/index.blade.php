@@ -6,19 +6,9 @@
         <div class="card">
             <div class="card-header">
                 <a href="{{url('catalogs/create')}}" class="btn btn-sm btn-primary pull-right">Create New Catalog</a>
-                <div class="card-tools">
-                    <div class="input-group input-group-sm" style="width: 150px;">
-                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-default">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="card-body table-responsive p-0" style="height: 300px;">
-                <table class="table table-head-fixed text-nowrap">
+                <table class="table table-head">
                     <thead>
                         <tr>
                             <th>No</th>

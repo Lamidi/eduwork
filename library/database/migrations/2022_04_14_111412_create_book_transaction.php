@@ -19,15 +19,6 @@ return new class extends Migration
             $table->foreignId('transaction_id');
             $table->integer('qty')->default(1);
             $table->timestamps();
-
-            $table->foreign('book_id')->references('id')
-                ->on('books')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
-            $table->foreign('transaction_id')->references('id')
-                ->on('transactions')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
         });
     }
 

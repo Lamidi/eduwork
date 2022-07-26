@@ -1,8 +1,7 @@
 @extends('layouts.admin')
 @section('header','DASBOARD')
 @section('content')
-
-<div class="container-fluid">
+<nav id="navbar-example2" class="navbar navbar-light bg-light">
     <div class="row">
         <div class="col-lg-3 col-6">
             <div class="small-box bg-info">
@@ -25,7 +24,7 @@
                 <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                 </div>
-                <a href="{{url('anggota')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{url('members')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <div class="col-lg-3 col-6">
@@ -37,7 +36,7 @@
                 <div class="icon">
                     <i class="ion ion-person-add"></i>
                 </div>
-                <a href="{{url('penerbit')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{url('publishers')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <div class="col-lg-3 col-6">
@@ -49,14 +48,9 @@
                 <div class="icon">
                     <i class="ion ion-pie-graph"></i>
                 </div>
-                <a href="{{url('peminjaman')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{url('transactions')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
-    </div>
-</div>
-
-<div class="container-fluid">
-    <div class="row">
         <div class="col-md-6">
             <div class="card card-danger">
                 <div class="card-header">
@@ -115,15 +109,10 @@
             </div>
         </div>
     </div>
-</div>
+</nav>
 @endsection
 <script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
-
-<script src="{{asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-
 <script src="{{asset('assets/plugins/chart.js/Chart.min.js')}}"></script>
-
-<script src="{{asset('assets/dist/js/adminlte.min.js?v=3.2.0')}}"></script>
 
 <script>
     var label_donut = '{!! json_encode($label_donut) !!}';

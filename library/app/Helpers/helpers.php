@@ -13,7 +13,6 @@ function rupiah($angka)
     $hasil_rupiah = "Rp. " . number_format($angka, 2, ',', '.');
     return $hasil_rupiah;
 }
-
 function due_date()
 {
     $transaction = Transaction::select('name', 'date_end', DB::raw('DATEDIFF(NOW(), date_end) as priode'))

@@ -6,8 +6,6 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap4.min.css" />
 @endsection
 @section('content')
-<!-- @can('index transactions') -->
-<!-- @role('officer') -->
 <div id="controller">
     <div class="col-md-12">
         <h2 class="mb-5"> Transactions </h2>
@@ -51,8 +49,6 @@
         </div>
     </div>
 </div>
-<!-- @endcan -->
-<!-- @endrole -->
 @endsection
 @section('js')
 {{-- Data table --}}

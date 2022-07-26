@@ -1,14 +1,6 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\TransactionController;
-use App\Models\Member;
-use App\Models\Transaction;
-use App\Models\User;
-use App\Notifications\TransactionNotification;
 use Illuminate\Support\Facades\Route;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,7 +33,13 @@ Route::resource('/publishers', App\Http\Controllers\PublisherController::class);
 Route::resource('/books', App\Http\Controllers\BookController::class);
 Route::resource('/members', App\Http\Controllers\MemberController::class);
 Route::resource('/transactions', App\Http\Controllers\TransactionController::class);
-Route::get('transactions', [App\Http\Controllers\AdminController::class, 'test_spatie']);
+
+// Route::resource('/transactions', [App\Http\Controllers\TransactionController::class, 'index']);
+// Route::resource('/transactions/create', [App\Http\Controllers\TransactionController::class, 'create']);
+// Route::resource('/transactions', [App\Http\Controllers\TransactionController::class, 'store']);
+// Route::resource('/transactions/{transaction}/edit', [App\Http\Controllers\TransactionController::class, 'edit']);
+// Route::resource('/transactions/{transaction}', [App\Http\Controllers\TransactionController::class, 'update']);
+// Route::resource('/transactions/{transaction}', [App\Http\Controllers\TransactionController::class, 'destroy']);
 
 Route::get('api/authors', [App\Http\Controllers\AuthorController::class, 'api']);
 Route::get('api/publishers', [App\Http\Controllers\PublisherController::class, 'api']);
@@ -49,20 +47,7 @@ Route::get('api/books', [App\Http\Controllers\BookController::class, 'api']);
 Route::get('api/members', [App\Http\Controllers\MemberController::class, 'api']);
 Route::get('api/transactions', [App\Http\Controllers\TransactionController::class, 'api']);
 
-// Route::get('/spatie', function () {
-//     $role = Spatie\Permission\Models\Role::whereName('officer')->exists() ? Spatie\Permission\Models\Role::whereName('officer')->first() : Spatie\Permission\Models\Role::create(['name' => 'officer']);
-//     $permission = Spatie\Permission\Models\Permission::where(['name' => 'index transactions'])->exists() ?  Spatie\Permission\Models\Permission::where(['name' => 'index transactions'])->first() : Spatie\Permission\Models\Permission::create(['name' => 'index transactions']);
-
-//     $role->givePermissionTo($permission);
-//     $permission->assignRole($role);
-
-//     $user = auth()->user();
-//     $user->assignRole('officer');
-
-//     $user = User::with('roles')->get();
-
-//     $user = User::where('id', 2)->first();
-//     if ($user) $user->removeRole('officer');
-
-//     return response()->json('Sukses');
+// Route::get('/transactions/{transaction}/edit', function () {
+//     $books = App\Models\Book::get()->toArray();
+//     return view('array', compact('books'));
 // });

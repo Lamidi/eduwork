@@ -45,6 +45,13 @@ class PresensiController extends Controller
         $date = new DateTime('now', new DateTimeZone($timezone));
         $tanggal = $date->format('Y-m-d');
         $localtime = $date->format('H:i:s');
+        $telat = $localtime < 9;
+        $masuk = 0;
+        if ($masuk < $telat) {
+            $keterangan = 0;
+        } else {
+            $keterangan = 1;
+        }
         $presensi = Presensi::where([
             ['user_id', '=', auth()->user()->id],
             ['tgl', '=', $tanggal],
@@ -56,8 +63,7 @@ class PresensiController extends Controller
                 'user_id' => auth()->user()->id,
                 'tgl' => $tanggal,
                 'jammasuk' => $localtime,
-                'keterangan' => $telat
-
+                'keterangan' => $keterangan
             ]);
         }
         return redirect()->back()->with('Success', 'Anda Berhasil Check In');
@@ -98,15 +104,22 @@ class PresensiController extends Controller
         $date = new DateTime('now', new DateTimeZone($timezone));
         $tanggal = $date->format('Y-m-d');
         $localtime = $date->format('H:i:s');
-
+        $cepat = $localtime > 17;
+        $pulang = 0;
+        if ($pulang < $cepat) {
+            $keterangan = 0;
+        } else {
+            $keterangan = 1;
+        }
         $presensi = Presensi::where([
             ['user_id', '=', auth()->user()->id],
             ['tgl', '=', $tanggal],
-        ])->first();
 
+        ])->first();
         $dt = [
             'jamkeluar' => $localtime,
-            'jamkerja' => date('H:i:s', strtotime($localtime) - strtotime($presensi->jammasuk))
+            'jamkerja' => date('H:i:s', strtotime($localtime) - strtotime($presensi->jammasuk)),
+            'keterangan' => $keterangan
         ];
 
         if ($presensi->jamkeluar == "") {

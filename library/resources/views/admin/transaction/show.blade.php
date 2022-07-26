@@ -1,5 +1,4 @@
 @extends('layouts.admin')
-
 @section('title','Show Transaction')
 @section('content')
 <h2 class="mb-5">Transaction</h2>
@@ -52,7 +51,4 @@
         </div>
     </div>
 </div>
-
-
-
 @endsection
