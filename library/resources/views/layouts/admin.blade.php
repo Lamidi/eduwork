@@ -108,6 +108,7 @@
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+            @role('admin')
             <li class="nav-item menu-open">
               <a href="{{url('home')}}" class="nav-link {{request()->is('home')?'active':''}}">
                 <i class="nav-icon fas fa-house"></i>
@@ -164,6 +165,33 @@
                 </p>
               </a>
             </li>
+            @endrole
+            @role('petugas')
+            <li class="nav-item menu-open">
+              <a href="{{url('home')}}" class="nav-link {{request()->is('home')?'active':''}}">
+                <i class="nav-icon fas fa-house"></i>
+                <p>
+                  Home
+                </p>
+              </a>
+            </li>
+            <li class="nav-item menu-open">
+              <a href="{{url('members')}}" class="nav-link {{request()->is('members')?'active':''}}">
+                <i class="nav-icon fas fa-id-card"></i>
+                <p>
+                  Member
+                </p>
+              </a>
+            </li>
+            <li class="nav-item menu-open">
+              <a href="<?= url('transactions'); ?>" class="nav-link {{request()->is('transactions')?'active':''}}">
+                <i class="nav-icon fas fa-cash-register"></i>
+                <p>
+                  Transaction
+                </p>
+              </a>
+            </li>
+            @endrole
           </ul>
         </nav>
         <!-- /.sidebar-menu -->

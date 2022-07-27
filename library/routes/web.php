@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,3 +54,23 @@ Route::get('api/transactions', [App\Http\Controllers\TransactionController::clas
 //     $books = App\Models\Book::get()->toArray();
 //     return view('array', compact('books'));
 // });
+
+Route::get('/spatie', function () {
+    // $role = Spatie\Permission\Models\Role::whereName('petugas')->exists() ?
+    //     Spatie\Permission\Models\Role::whereName('petugas')->first() : Spatie\Permission\Models\Role::create(['name' => 'petugas']);
+    // $permission = Spatie\Permission\Models\Permission::where(['name' => 'index petugas'])->exists() ?
+    //     Spatie\Permission\Models\Permission::where(['name' => 'index petugas'])->first() : Spatie\Permission\Models\Permission::create(['name' => 'index petugas']);
+
+    // $role->givePermissionTo($permission);
+    // $permission->assignRole($role);
+
+    $user = auth()->user();
+    $user->assignRole('petugas');
+
+    // $user = User::with('roles')->get();
+    return $user;
+    //     $user = User::where('id', 2)->first();
+    //     if ($user) $user->removeRole('officer');
+
+    return response()->json('Sukses');
+});

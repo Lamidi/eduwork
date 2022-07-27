@@ -95,7 +95,9 @@
                 return `
             <a href="${actionUrl}/${data.id}/" class="btn btn-rounded btn-info  py-2 ms-1" onclick="controller.detailData(event, ${meta.row})"> view </a>
             <a href="${actionUrl}/${data.id}/edit" class="btn btn-rounded btn-warning  py-2 ms-1" onclick="controller.editData(event, ${meta.row})"> Edit </a>
+            @role('admin')
             <a  class="btn btn-rounded btn-danger  py-2 ms-1" onclick="controller.deleteData(event, ${data.id})"> Delete </a>
+            @endrole
             `;
             },
             orderable: false,

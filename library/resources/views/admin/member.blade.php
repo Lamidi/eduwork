@@ -140,8 +140,9 @@
             render: function(index, row, data, meta) {
                 return ` 
                 <a href="#" class="btn btn-warning btn-sm" onclick="controller.editData (event,${meta.row})"> Edit </a> 
+                @role('admin')
                 <a class="btn btn-danger btn-sm" onclick="controller.deleteData(event,${data.id})">Delete </a>
-                `;
+                @endrole`;
             },
             orderable: false,
             width: '200px',
